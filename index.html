@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$mart Cart — Smart Grocery Shopping</title>
+  <meta name="description" content="Compare grocery prices across stores, track your macros, and get AI-powered meal plans — all in one subscription." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="index.html">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <span><em>$</em>mart Cart</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="how-it-works-.html">How It Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="#pricing" class="btn btn-outline" style="padding:10px 22px;font-size:.9rem;">See Plans</a>
+        <a href="#email-capture" class="btn btn-primary" style="padding:10px 22px;font-size:.9rem;">Get Early Access</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="how-it-works-.html">How It Works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="#pricing" style="color:var(--green-dark);font-weight:700;">See Plans</a>
+    </div>
+  </header>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Now in Early Access
+        </div>
+
+        <h1>Shop Smarter.<br>Eat <span>Better.</span><br>Save More.</h1>
+
+        <p class="hero-sub">
+          $mart Cart compares grocery prices across your local stores, tracks your macros,
+          and builds personalized meal plans — powered by AI.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#email-capture" class="btn btn-white">Get Early Access</a>
+          <a href="how-it-works-.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5);">See How It Works</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">40+</div>
+            <div class="stat-label">Stores Compared</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$180</div>
+            <div class="stat-label">Avg. Monthly Savings</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Recipes &amp; Meal Plans</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo card -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <span class="hero-card-title">Cart Comparison</span>
+            <span class="hero-card-badge">Live</span>
+          </div>
+
+          <!-- Cart items list -->
+          <div class="cart-items">
+            <div class="cart-item-row">
+              <span class="cart-item-name">Chicken Breast, 2 lb</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Whole Milk, 1 gal</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Whole Wheat Bread</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Eggs, 1 dozen</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Bananas, 1 lb</span>
+            </div>
+          </div>
+
+          <div class="cart-divider"></div>
+
+          <!-- Store totals -->
+          <div class="price-row">
+            <div class="price-store">
+              <div class="store-icon" style="background:#1565C0;">WM</div>
+              <div>
+                <div class="store-name">Walmart</div>
+                <div class="store-item">5 items · best price each</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="price-tag best">$24.13</div>
+              <div class="price-best-label">Best Price ✓</div>
+            </div>
+          </div>
+
+          <div class="price-row">
+            <div class="price-store">
+              <div class="store-icon" style="background:#1B5E20;">KR</div>
+              <div>
+                <div class="store-name">Kroger</div>
+                <div class="store-item">5 items</div>
+              </div>
+            </div>
+            <div>
+              <div class="price-tag">$28.45</div>
+            </div>
+          </div>
+
+          <div class="price-row">
+            <div class="price-store">
+              <div class="store-icon" style="background:#BF360C;">TG</div>
+              <div>
+                <div class="store-name">Target</div>
+                <div class="store-item">5 items</div>
+              </div>
+            </div>
+            <div>
+              <div class="price-tag">$31.20</div>
+            </div>
+          </div>
+
+          <div class="savings-banner">
+            <span class="savings-text">Savings vs. most expensive store</span>
+            <span class="savings-amount">$7.07</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ────────────────────────────────────────── -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Features</span>
+        <h2>Everything you need to shop smart</h2>
+        <p>One subscription gives you real-time price intelligence, personalized nutrition tracking, and AI-generated meal plans tailored to your budget.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">$</div>
+          <h3>Real-Time Price Comparison</h3>
+          <p>Instantly compare prices across 40+ grocery stores in your area. Build your cart and let $mart Cart find you the best deal automatically.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">N</div>
+          <h3>Macro &amp; Nutrition Tracker</h3>
+          <p>Track calories, protein, carbs, and fats for every item in your cart. Hit your health goals while staying on budget — no double-app juggling.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">AI</div>
+          <h3>AI Meal Planner</h3>
+          <p>Get a full week of personalized meal plans generated by AI, optimized for your dietary needs, taste preferences, and weekly grocery budget.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">%</div>
+          <h3>Sale &amp; Coupon Alerts</h3>
+          <p>Never miss a deal. Receive instant notifications when items on your shopping list go on sale or a matching coupon becomes available.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">R</div>
+          <h3>500+ Budget Recipes</h3>
+          <p>Access a growing library of delicious, budget-friendly recipes. Each recipe auto-generates a shopping list optimized for your nearest store.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">RT</div>
+          <h3>Store Route Optimizer</h3>
+          <p>When split-store shopping saves big, our route optimizer plans the most efficient path to hit multiple stores with minimal time and gas spent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works (mini) ─────────────────────────────── -->
+  <section class="how-mini" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">How It Works</span>
+        <h2>Four steps to smarter grocery shopping</h2>
+        <p>Getting started takes less than two minutes. See the full walkthrough on our <a href="how-it-works-.html" style="color:var(--green-dark);font-weight:600;">How It Works</a> page.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Create Your Profile</h3>
+          <p>Set your dietary goals, food preferences, and monthly grocery budget.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Build Your List</h3>
+          <p>Add items manually or let our AI suggest a week's worth of groceries for you.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Compare &amp; Save</h3>
+          <p>We scan prices across local stores and highlight the best deal for every item.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Shop &amp; Track</h3>
+          <p>Check off items as you shop and watch your nutrition and savings tally in real time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ──────────────────────────────────────────── -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Pricing</span>
+        <h2>Simple, transparent pricing</h2>
+        <p>Start free for 30 days. Cancel any time. Every plan pays for itself in your first shopping trip.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Base -->
+        <div class="pricing-card">
+          <div class="pricing-tier">Base</div>
+          <h3>Price Tracker</h3>
+          <div class="price-display">
+            <span class="price-currency">$</span>
+            <span class="price-amount">5</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <p class="pricing-desc">Everything you need to find the best grocery prices near you.</p>
+          <ul class="feature-list">
+            <li><span class="check-icon">✓</span> Real-time price comparison</li>
+            <li><span class="check-icon">✓</span> 40+ stores supported</li>
+            <li><span class="check-icon">✓</span> Shopping list builder</li>
+            <li><span class="check-icon">✓</span> Sale &amp; coupon alerts</li>
+            <li><span class="check-icon">✓</span> Weekly savings report</li>
+          </ul>
+          <a href="#email-capture" class="btn btn-outline">Get Started</a>
+        </div>
+
+        <!-- Standard / Featured -->
+        <div class="pricing-card featured" style="position:relative;">
+          <span class="featured-badge">Most Popular</span>
+          <div class="pricing-tier">Standard</div>
+          <h3>Nutrition+</h3>
+          <div class="price-display">
+            <span class="price-currency">$</span>
+            <span class="price-amount">10</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <p class="pricing-desc">Price comparison plus full macro tracking to fuel your health goals.</p>
+          <ul class="feature-list">
+            <li><span class="check-icon">✓</span> Everything in Base</li>
+            <li><span class="check-icon">✓</span> Macro &amp; calorie calculator</li>
+            <li><span class="check-icon">✓</span> Nutrition label scanner</li>
+            <li><span class="check-icon">✓</span> Daily &amp; weekly nutrition goals</li>
+            <li><span class="check-icon">✓</span> Progress charts &amp; insights</li>
+          </ul>
+          <a href="#email-capture" class="btn btn-featured">Get Started</a>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card">
+          <div class="pricing-tier">Premium</div>
+          <h3>AI Planner</h3>
+          <div class="price-display">
+            <span class="price-currency">$</span>
+            <span class="price-amount">15</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <p class="pricing-desc">The full experience — AI meal planning, recipes, and maximum savings.</p>
+          <ul class="feature-list">
+            <li><span class="check-icon">✓</span> Everything in Standard</li>
+            <li><span class="check-icon">✓</span> AI-powered meal planner</li>
+            <li><span class="check-icon">✓</span> 500+ budget recipes</li>
+            <li><span class="check-icon">✓</span> Auto grocery list from meals</li>
+            <li><span class="check-icon">✓</span> Store route optimizer</li>
+          </ul>
+          <a href="#email-capture" class="btn btn-outline">Get Started</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Email Capture ────────────────────────────────────── -->
+  <section class="email-capture" id="email-capture">
+    <div class="container">
+      <h2>Be the first to know when we launch</h2>
+      <p>Join thousands of smart shoppers on the early access list. No spam — just your invite.</p>
+
+      <form class="email-form" id="email-form" novalidate>
+        <input
+          type="email"
+          id="email-input"
+          placeholder="Enter your email address"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn btn-white">Notify Me</button>
+      </form>
+
+      <div id="email-confirmation" role="alert">
+        You're on the list! We'll be in touch soon.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <div class="footer-brand-name"><em>$</em>mart Cart</div>
+        <p>The smartest way to shop for groceries. Compare prices, track nutrition, and plan meals — all in one place.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="how-it-works-.html">How It Works</a></li>
+          <li><a href="#email-capture">Early Access</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 $mart Cart. All rights reserved.</span>
+      <span>Built for smarter shoppers</span>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ───────────────────────────────────────────── -->
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // Email capture form
+    const form = document.getElementById('email-form');
+    const confirmation = document.getElementById('email-confirmation');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value.trim();
+      if (!email || !email.includes('@')) return;
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (mobileNav.classList.contains('open')) {
+            mobileNav.classList.remove('open');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

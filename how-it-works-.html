@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — $mart Cart</title>
+  <meta name="description" content="See exactly how $mart Cart compares grocery prices, tracks your nutrition, and builds AI meal plans in four simple steps." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Page-specific styles ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-darkest) 0%, var(--green-mid) 60%, #81C784 100%);
+      color: var(--white);
+      padding: 80px 24px 70px;
+      text-align: center;
+    }
+    .page-hero h1 { color: var(--white); margin-bottom: 14px; }
+    .page-hero p  { color: rgba(255,255,255,.82); font-size: 1.15rem; max-width: 560px; margin: 0 auto; }
+
+    /* Steps */
+    .steps-section {
+      padding: 90px 24px;
+      background: var(--white);
+    }
+    .steps-full {
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--gray-200);
+      align-items: flex-start;
+    }
+    .step-row:last-child { border-bottom: none; }
+    .step-num-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .step-circle {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(46,125,50,.35);
+    }
+    .step-connector {
+      width: 2px;
+      flex: 1;
+      min-height: 32px;
+      background: linear-gradient(180deg, var(--green-mid), var(--green-light));
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+    .step-row:last-child .step-connector { display: none; }
+
+    .step-body { padding-top: 10px; }
+    .step-body .step-tag {
+      display: inline-block;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+    .step-body h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .step-body p  { font-size: 1rem; line-height: 1.75; margin-bottom: 12px; }
+    .step-body ul { padding-left: 4px; }
+    .step-body ul li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: .95rem;
+      color: var(--gray-600);
+      margin-bottom: 8px;
+    }
+    .step-body ul li::before {
+      content: '✓';
+      color: var(--green-dark);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* AI Features */
+    .ai-section {
+      padding: 90px 24px;
+      background: var(--green-pale);
+    }
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .ai-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+      border-top: 4px solid var(--green-mid);
+    }
+    .ai-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .ai-card .ai-icon { font-size: 2rem; margin-bottom: 14px; }
+    .ai-card h3 { margin-bottom: 10px; }
+    .ai-card p  { font-size: .95rem; }
+
+    /* Demo */
+    .demo-section {
+      padding: 90px 24px;
+      background: var(--white);
+    }
+    .demo-container {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .demo-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .demo-tab {
+      padding: 10px 22px;
+      border-radius: 50px;
+      border: 2px solid var(--gray-200);
+      background: var(--white);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .demo-tab.active,
+    .demo-tab:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: var(--white);
+    }
+
+    .demo-panel {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 36px;
+      min-height: 360px;
+      display: none;
+    }
+    .demo-panel.active { display: block; }
+
+    .demo-panel h3 { margin-bottom: 6px; color: var(--gray-900); }
+    .demo-panel .demo-sub { font-size: .9rem; color: var(--gray-600); margin-bottom: 28px; }
+
+    /* Price comparison demo */
+    .demo-compare-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+      border: 1px solid var(--gray-200);
+      transition: all var(--transition);
+    }
+    .demo-compare-row:hover { border-color: var(--green-light); }
+    .demo-compare-row.best-row {
+      border-color: var(--green-mid);
+      background: var(--green-pale);
+    }
+    .demo-store-info { display: flex; align-items: center; gap: 12px; }
+    .demo-store-dot {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 700; color: var(--white);
+    }
+    .demo-store-name { font-weight: 600; font-size: .95rem; color: var(--gray-900); }
+    .demo-store-dist { font-size: .8rem; color: var(--gray-600); }
+    .demo-price-col { text-align: right; }
+    .demo-price     { font-size: 1.1rem; font-weight: 700; color: var(--gray-900); }
+    .demo-price.best { color: var(--green-dark); }
+    .demo-best-tag  { font-size: .72rem; font-weight: 700; color: var(--green-dark); background: #C8E6C9; padding: 2px 8px; border-radius: 50px; }
+
+    .demo-savings-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--green-dark);
+      color: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 14px 20px;
+      margin-top: 16px;
+    }
+    .demo-savings-label { font-size: .95rem; font-weight: 600; }
+    .demo-savings-val   { font-size: 1.2rem; font-weight: 800; }
+
+    /* Macro demo */
+    .macro-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .macro-tile {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 16px 12px;
+      text-align: center;
+      border: 1px solid var(--gray-200);
+    }
+    .macro-val  { font-size: 1.5rem; font-weight: 800; color: var(--green-dark); }
+    .macro-unit { font-size: .75rem; color: var(--gray-600); }
+    .macro-label{ font-size: .8rem; font-weight: 600; color: var(--gray-800); margin-top: 4px; }
+    .macro-bar-wrap { margin-bottom: 12px; }
+    .macro-bar-label {
+      display: flex; justify-content: space-between;
+      font-size: .85rem; color: var(--gray-700); margin-bottom: 6px; font-weight: 500;
+    }
+    .macro-bar-track {
+      height: 10px; background: var(--gray-200); border-radius: 10px; overflow: hidden;
+    }
+    .macro-bar-fill {
+      height: 100%; border-radius: 10px;
+      background: linear-gradient(90deg, var(--green-dark), var(--green-light));
+    }
+
+    /* Meal plan demo */
+    .meal-day {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      border: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .meal-day-label { font-weight: 700; color: var(--green-dark); font-size: .85rem; min-width: 60px; }
+    .meal-day-meals { flex: 1; font-size: .9rem; color: var(--gray-700); }
+    .meal-day-cost  { font-size: .9rem; font-weight: 700; color: var(--gray-900); white-space: nowrap; }
+
+    /* CTA */
+    .hiw-cta {
+      padding: 90px 24px;
+      background: linear-gradient(135deg, var(--green-darkest), var(--green-mid));
+      text-align: center;
+      color: var(--white);
+    }
+    .hiw-cta h2 { color: var(--white); margin-bottom: 14px; }
+    .hiw-cta p  { color: rgba(255,255,255,.8); max-width: 500px; margin: 0 auto 32px; font-size: 1.05rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .ai-grid    { grid-template-columns: 1fr; }
+      .macro-grid { grid-template-columns: repeat(2, 1fr); }
+      .step-row   { grid-template-columns: 56px 1fr; gap: 20px; }
+      .step-circle{ width: 52px; height: 52px; font-size: 1.2rem; }
+    }
+    @media (max-width: 540px) {
+      .demo-panel { padding: 20px; }
+      .meal-day   { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="index.html">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <span><em>$</em>mart Cart</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works-.html" class="active">How It Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="index.html#pricing" class="btn btn-outline" style="padding:10px 22px;font-size:.9rem;">See Plans</a>
+        <a href="index.html#email-capture" class="btn btn-primary" style="padding:10px 22px;font-size:.9rem;">Get Early Access</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="how-it-works-.html">How It Works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html#pricing" style="color:var(--green-dark);font-weight:700;">See Plans</a>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ───────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label" style="background:rgba(255,255,255,.15);color:#fff;">The Process</span>
+      <h1>How $mart Cart works</h1>
+      <p>From building your list to checking out smarter — here's exactly how $mart Cart saves you money and keeps you on track nutritionally.</p>
+    </div>
+  </section>
+
+  <!-- ── Step by Step ────────────────────────────────────── -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Step by Step</span>
+        <h2>Simple to use, powerful under the hood</h2>
+        <p>No learning curve. Just smarter shopping in four steps.</p>
+      </div>
+
+      <div class="steps-full">
+        <div class="step-row">
+          <div class="step-num-col">
+            <div class="step-circle">1</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-body">
+            <span class="step-tag">Setup</span>
+            <h3>Create your profile</h3>
+            <p>Tell $mart Cart about yourself — your location, dietary goals, food preferences, and your weekly grocery budget. This takes less than two minutes and unlocks personalized recommendations from day one.</p>
+            <ul>
+              <li>Set calorie and macro targets</li>
+              <li>Choose dietary preferences (vegan, keto, gluten-free, etc.)</li>
+              <li>Enter your zip code to find nearby stores</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-row">
+          <div class="step-num-col">
+            <div class="step-circle">2</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-body">
+            <span class="step-tag">List Building</span>
+            <h3>Build or generate your shopping list</h3>
+            <p>Add items manually, scan barcodes, or let the AI generate a complete week's worth of groceries based on your meal plan. Every item is linked to live price data across your local stores.</p>
+            <ul>
+              <li>Manual entry or barcode scan</li>
+              <li>AI auto-generates a list from your meal plan</li>
+              <li>Reuse previous lists with one tap</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-row">
+          <div class="step-num-col">
+            <div class="step-circle">3</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-body">
+            <span class="step-tag">Price Intelligence</span>
+            <h3>Compare prices across 40+ stores</h3>
+            <p>$mart Cart scans prices at every major grocery store near you — updated multiple times daily. See your full cart total at each store instantly, and identify exactly which items to buy where for maximum savings.</p>
+            <ul>
+              <li>Real-time prices updated throughout the day</li>
+              <li>Side-by-side store comparison for every item</li>
+              <li>Automatic coupon and sale matching</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-row">
+          <div class="step-num-col">
+            <div class="step-circle">4</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-body">
+            <span class="step-tag">In-Store</span>
+            <h3>Shop and track in real time</h3>
+            <p>Check off items as you shop. Your running total and macro intake update with each check-off so you always know where you stand — on budget and on your nutrition goals — before you hit the checkout.</p>
+            <ul>
+              <li>Live running cart total and savings counter</li>
+              <li>Macros and calories update as you shop</li>
+              <li>Substitution suggestions when items are out of stock</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AI Features ──────────────────────────────────────── -->
+  <section class="ai-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">AI Features</span>
+        <h2>Powered by artificial intelligence</h2>
+        <p>$mart Cart's AI layer does the heavy lifting — surfacing the right deals, building your meal plan, and learning your preferences over time.</p>
+      </div>
+
+      <div class="ai-grid">
+        <div class="ai-card">
+          <div class="ai-icon">01</div>
+          <h3>Smart Price Engine</h3>
+          <p>Our AI continuously monitors prices across all supported stores, detects price drops, and automatically surfaces the best deal for every item on your list.</p>
+        </div>
+        <div class="ai-card">
+          <div class="ai-icon">02</div>
+          <h3>Personalized Meal Planner</h3>
+          <p>Tell the AI your goals, restrictions, and budget — it builds a complete weekly meal plan and generates an optimized grocery list to match.</p>
+        </div>
+        <div class="ai-card">
+          <div class="ai-icon">03</div>
+          <h3>Nutrition Intelligence</h3>
+          <p>The macro calculator learns which foods help you hit your targets and proactively suggests swaps that improve nutrition without increasing cost.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Interactive Demo ─────────────────────────────────── -->
+  <section class="demo-section" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Interactive Demo</span>
+        <h2>See it in action</h2>
+        <p>Explore how each feature works with this interactive preview.</p>
+      </div>
+
+      <div class="demo-container">
+        <div class="demo-tabs">
+          <button class="demo-tab active" data-panel="price">Price Comparison</button>
+          <button class="demo-tab" data-panel="macro">Macro Tracker</button>
+          <button class="demo-tab" data-panel="meal">Meal Planner</button>
+        </div>
+
+        <!-- Price Comparison Panel -->
+        <div class="demo-panel active" id="panel-price">
+          <h3>Price Comparison — Chicken Breast (2 lb)</h3>
+          <p class="demo-sub">Live prices across stores near you · Updated 12 min ago</p>
+
+          <div class="demo-compare-row best-row">
+            <div class="demo-store-info">
+              <div class="demo-store-dot" style="background:#1565C0;">WM</div>
+              <div>
+                <div class="demo-store-name">Walmart</div>
+                <div class="demo-store-dist">0.8 mi away</div>
+              </div>
+            </div>
+            <div class="demo-price-col">
+              <div class="demo-price best">$6.47</div>
+              <div class="demo-best-tag">Best Price</div>
+            </div>
+          </div>
+
+          <div class="demo-compare-row">
+            <div class="demo-store-info">
+              <div class="demo-store-dot" style="background:#1B5E20;">KR</div>
+              <div>
+                <div class="demo-store-name">Kroger</div>
+                <div class="demo-store-dist">1.2 mi away</div>
+              </div>
+            </div>
+            <div class="demo-price-col">
+              <div class="demo-price">$7.99</div>
+            </div>
+          </div>
+
+          <div class="demo-compare-row">
+            <div class="demo-store-info">
+              <div class="demo-store-dot" style="background:#BF360C;">TG</div>
+              <div>
+                <div class="demo-store-name">Target</div>
+                <div class="demo-store-dist">2.1 mi away</div>
+              </div>
+            </div>
+            <div class="demo-price-col">
+              <div class="demo-price">$8.49</div>
+            </div>
+          </div>
+
+          <div class="demo-compare-row">
+            <div class="demo-store-info">
+              <div class="demo-store-dot" style="background:#4A148C;">WF</div>
+              <div>
+                <div class="demo-store-name">Whole Foods</div>
+                <div class="demo-store-dist">3.4 mi away</div>
+              </div>
+            </div>
+            <div class="demo-price-col">
+              <div class="demo-price">$10.99</div>
+            </div>
+          </div>
+
+          <div class="demo-savings-bar">
+            <span class="demo-savings-label">Estimated savings on full cart vs. highest price store</span>
+            <span class="demo-savings-val">$23.14</span>
+          </div>
+        </div>
+
+        <!-- Macro Tracker Panel -->
+        <div class="demo-panel" id="panel-macro">
+          <h3>Today's Macro Summary</h3>
+          <p class="demo-sub">Based on your shopping list for today · 4 items tracked</p>
+
+          <div class="macro-grid">
+            <div class="macro-tile">
+              <div class="macro-val">1,840</div>
+              <div class="macro-unit">kcal</div>
+              <div class="macro-label">Calories</div>
+            </div>
+            <div class="macro-tile">
+              <div class="macro-val">148g</div>
+              <div class="macro-unit">protein</div>
+              <div class="macro-label">Protein</div>
+            </div>
+            <div class="macro-tile">
+              <div class="macro-val">195g</div>
+              <div class="macro-unit">carbs</div>
+              <div class="macro-label">Carbs</div>
+            </div>
+            <div class="macro-tile">
+              <div class="macro-val">52g</div>
+              <div class="macro-unit">fat</div>
+              <div class="macro-label">Fat</div>
+            </div>
+          </div>
+
+          <div class="macro-bar-wrap">
+            <div class="macro-bar-label"><span>Calories</span><span>1,840 / 2,000 kcal</span></div>
+            <div class="macro-bar-track"><div class="macro-bar-fill" style="width:92%;background:linear-gradient(90deg,#2E7D32,#66BB6A);"></div></div>
+          </div>
+          <div class="macro-bar-wrap">
+            <div class="macro-bar-label"><span>Protein</span><span>148 / 160g</span></div>
+            <div class="macro-bar-track"><div class="macro-bar-fill" style="width:93%;background:linear-gradient(90deg,#1565C0,#42A5F5);"></div></div>
+          </div>
+          <div class="macro-bar-wrap">
+            <div class="macro-bar-label"><span>Carbs</span><span>195 / 250g</span></div>
+            <div class="macro-bar-track"><div class="macro-bar-fill" style="width:78%;background:linear-gradient(90deg,#E65100,#FFA726);"></div></div>
+          </div>
+          <div class="macro-bar-wrap">
+            <div class="macro-bar-label"><span>Fat</span><span>52 / 65g</span></div>
+            <div class="macro-bar-track"><div class="macro-bar-fill" style="width:80%;background:linear-gradient(90deg,#6A1B9A,#AB47BC);"></div></div>
+          </div>
+        </div>
+
+        <!-- Meal Planner Panel -->
+        <div class="demo-panel" id="panel-meal">
+          <h3>AI Meal Plan — This Week</h3>
+          <p class="demo-sub">Generated for your goals · ~$87 estimated grocery cost</p>
+
+          <div class="meal-day">
+            <span class="meal-day-label">MON</span>
+            <span class="meal-day-meals">Oatmeal &amp; eggs · Grilled chicken salad · Salmon with rice &amp; broccoli</span>
+            <span class="meal-day-cost">$12.40</span>
+          </div>
+          <div class="meal-day">
+            <span class="meal-day-label">TUE</span>
+            <span class="meal-day-meals">Greek yogurt &amp; fruit · Turkey wrap · Beef stir-fry with vegetables</span>
+            <span class="meal-day-cost">$13.10</span>
+          </div>
+          <div class="meal-day">
+            <span class="meal-day-label">WED</span>
+            <span class="meal-day-meals">Smoothie bowl · Tuna salad sandwich · Chicken tacos</span>
+            <span class="meal-day-cost">$11.85</span>
+          </div>
+          <div class="meal-day">
+            <span class="meal-day-label">THU</span>
+            <span class="meal-day-meals">Avocado toast &amp; eggs · Quinoa bowl · Baked cod &amp; sweet potato</span>
+            <span class="meal-day-cost">$14.20</span>
+          </div>
+          <div class="meal-day">
+            <span class="meal-day-label">FRI</span>
+            <span class="meal-day-meals">Protein pancakes · Caesar salad · Pasta with ground turkey</span>
+            <span class="meal-day-cost">$11.60</span>
+          </div>
+
+          <div class="demo-savings-bar" style="margin-top:16px;">
+            <span class="demo-savings-label">Weekly estimated grocery total</span>
+            <span class="demo-savings-val">$87.15</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ─────────────────────────────────────────────── -->
+  <section class="hiw-cta">
+    <div class="container">
+      <h2>Ready to start saving?</h2>
+      <p>Join the early access list and be the first to try $mart Cart when we launch.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html#email-capture" class="btn btn-white">Get Early Access</a>
+        <a href="index.html#pricing" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5);">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <div class="footer-brand-name"><em>$</em>mart Cart</div>
+        <p>The smartest way to shop for groceries. Compare prices, track nutrition, and plan meals — all in one place.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="how-it-works-.html">How It Works</a></li>
+          <li><a href="index.html#email-capture">Early Access</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 $mart Cart. All rights reserved.</span>
+      <span>Built for smarter shoppers</span>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+
+    // Demo tabs
+    document.querySelectorAll('.demo-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

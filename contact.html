@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — $mart Cart</title>
+  <meta name="description" content="Get in touch with the $mart Cart team. We'd love to hear from you." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    /* ── Page-specific styles ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-darkest) 0%, var(--green-mid) 60%, #81C784 100%);
+      color: var(--white);
+      padding: 80px 24px 70px;
+      text-align: center;
+    }
+    .page-hero h1 { color: var(--white); margin-bottom: 14px; }
+    .page-hero p  { color: rgba(255,255,255,.82); font-size: 1.15rem; max-width: 520px; margin: 0 auto; }
+
+    /* Contact layout */
+    .contact-section {
+      padding: 90px 24px;
+      background: var(--white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    /* Info column */
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info > p { margin-bottom: 36px; font-size: 1.05rem; line-height: 1.75; }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      background: var(--green-pale);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-item h4 { font-size: .9rem; color: var(--gray-900); margin-bottom: 2px; }
+    .contact-item p  { font-size: .9rem; margin: 0; }
+
+    .contact-divider {
+      height: 1px;
+      background: var(--gray-200);
+      margin: 32px 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+    .social-link {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: all var(--transition);
+      border: 1px solid var(--gray-200);
+    }
+    .social-link:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Form card */
+    .contact-form-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-form-card h3 { margin-bottom: 6px; }
+    .contact-form-card > p { font-size: .95rem; margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    label span { color: var(--green-dark); }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: .95rem;
+      font-family: inherit;
+      color: var(--gray-900);
+      background: var(--white);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      appearance: none;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green-mid);
+      box-shadow: 0 0 0 3px rgba(56,142,60,.12);
+    }
+    textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    #contact-confirmation {
+      display: none;
+      background: var(--green-pale);
+      border: 1px solid var(--green-light);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    #contact-confirmation .confirm-icon { font-size: 2rem; margin-bottom: 8px; }
+    #contact-confirmation h4 { color: var(--green-dark); margin-bottom: 6px; }
+    #contact-confirmation p  { font-size: .9rem; margin: 0; }
+
+    /* FAQ */
+    .faq-section {
+      padding: 90px 24px;
+      background: var(--gray-50);
+    }
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      text-align: left;
+      gap: 16px;
+      transition: background var(--transition);
+    }
+    .faq-question:hover { background: var(--gray-50); }
+    .faq-question.open  { color: var(--green-dark); }
+    .faq-chevron {
+      font-size: .85rem;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+      color: var(--gray-600);
+    }
+    .faq-question.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: .95rem;
+      color: var(--gray-600);
+      line-height: 1.75;
+    }
+    .faq-answer.open { display: block; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-form-card { padding: 28px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="index.html">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <span><em>$</em>mart Cart</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works-.html">How It Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="index.html#pricing" class="btn btn-outline" style="padding:10px 22px;font-size:.9rem;">See Plans</a>
+        <a href="index.html#email-capture" class="btn btn-primary" style="padding:10px 22px;font-size:.9rem;">Get Early Access</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="how-it-works-.html">How It Works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html#pricing" style="color:var(--green-dark);font-weight:700;">See Plans</a>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ───────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label" style="background:rgba(255,255,255,.15);color:#fff;">Contact Us</span>
+      <h1>We'd love to hear from you</h1>
+      <p>Questions, feedback, partnership ideas — whatever's on your mind, send it our way. We reply within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- ── Contact ──────────────────────────────────────────── -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info -->
+        <div class="contact-info">
+          <span class="section-label">Get In Touch</span>
+          <h2>Let's talk</h2>
+          <p>Whether you're curious about features, pricing, or want to explore a partnership — we're here and happy to chat.</p>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">@</div>
+            <div>
+              <h4>Email</h4>
+              <p>hello@smartcart.app</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4>Location</h4>
+              <p>United States</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">24h</div>
+            <div>
+              <h4>Response Time</h4>
+              <p>Within 24 hours, Mon–Fri</p>
+            </div>
+          </div>
+
+          <div class="contact-divider"></div>
+
+          <p style="font-size:.9rem;color:var(--gray-600);margin-bottom:14px;font-weight:600;">Follow the journey</p>
+          <div class="social-links">
+            <a class="social-link" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a class="social-link" href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="social-link" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="social-link" href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="contact-form-card">
+          <h3>Send a message</h3>
+          <p>Fill out the form and we'll get back to you shortly.</p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span>*</span></label>
+                <input type="text" id="first-name" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span>*</span></label>
+                <input type="text" id="last-name" placeholder="Smith" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email Address <span>*</span></label>
+              <input type="email" id="contact-email" placeholder="jane@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject">
+                <option value="">Select a topic...</option>
+                <option>General Question</option>
+                <option>Early Access / Beta</option>
+                <option>Pricing &amp; Plans</option>
+                <option>Partnership / Press</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span>*</span></label>
+              <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">Send Message &rarr;</button>
+          </form>
+
+          <div id="contact-confirmation" role="alert">
+            <div class="confirm-icon">&#10003;</div>
+            <h4>Message sent!</h4>
+            <p>Thanks for reaching out. We'll reply to your email within 24 hours.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ─────────────────────────────────────────────── -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FAQ</span>
+        <h2>Common questions</h2>
+        <p>Quick answers to the things we get asked most.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            When will $mart Cart launch?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">We're currently in early development and building our early access list. Sign up on the homepage to be among the first notified when we launch — early access members get a discounted rate locked in for life.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Which grocery stores are supported?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">At launch we'll support 40+ major national chains including Walmart, Kroger, Target, Whole Foods, Aldi, Costco, and more. Regional and local store support is on the roadmap for year one.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I cancel my subscription at any time?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">Yes — absolutely. There are no contracts or cancellation fees. You can cancel your subscription at any time from your account settings and you'll retain access through the end of your billing period.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is there a free trial?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">Yes! Every new account starts with a 30-day free trial — no credit card required. You get full access to your chosen plan's features and can upgrade, downgrade, or cancel at any time during the trial.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is my data private and secure?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">Your data is encrypted at rest and in transit. We never sell personal data to third parties or advertisers. Your shopping habits and health information are yours — we use them only to improve your personalized experience within the app.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <div class="footer-brand-name"><em>$</em>mart Cart</div>
+        <p>The smartest way to shop for groceries. Compare prices, track nutrition, and plan meals — all in one place.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="how-it-works-.html">How It Works</a></li>
+          <li><a href="index.html#email-capture">Early Access</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 $mart Cart. All rights reserved.</span>
+      <span>Built for smarter shoppers</span>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+
+    // Contact form
+    const form = document.getElementById('contact-form');
+    const confirmation = document.getElementById('contact-confirmation');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name  = document.getElementById('first-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const msg   = document.getElementById('message').value.trim();
+      if (!name || !email || !msg) return;
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+        // Toggle clicked
+        if (!isOpen) {
+          btn.classList.add('open');
+          answer.classList.add('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
