@@ -199,5 +199,7 @@
     });
   </script>
 
+  <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+  <script>window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300)});</script>
 </body>
 </html>

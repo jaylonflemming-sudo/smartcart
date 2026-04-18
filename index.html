@@ -63,7 +63,7 @@
 
         <div class="hero-actions">
           <a href="#email-capture" class="btn btn-white">Get Early Access</a>
-          <a href="how-it-works-.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5);">See How It Works</a>
+          <a href="how-it-works.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5);">See How It Works</a>
         </div>
 
         <div class="hero-stats">
@@ -479,7 +479,7 @@
       <div class="section-header">
         <span class="section-label">Pricing</span>
         <h2>Simple, transparent pricing</h2>
-        <p>Start free for 30 days. Cancel any time. Every plan pays for itself in your first shopping trip.</p>
+        <p>Start free for 7 days. Cancel any time. Every plan pays for itself in your first shopping trip.</p>
       </div>
 
       <div class="pricing-grid">
@@ -502,7 +502,7 @@
             <li><span class="check-icon">✓</span> Sale &amp; coupon alerts</li>
             <li><span class="check-icon">✓</span> Weekly savings report</li>
           </ul>
-          <a href="#email-capture" class="btn btn-outline">Get Started</a>
+          <button onclick="openSignup('base')" class="btn btn-outline" style="width:100%;">Get Started</button>
         </div>
 
         <!-- Standard / Featured -->
@@ -524,7 +524,7 @@
             <li><span class="check-icon">✓</span> Daily &amp; weekly nutrition goals</li>
             <li><span class="check-icon">✓</span> Progress charts &amp; insights</li>
           </ul>
-          <a href="#email-capture" class="btn btn-featured">Get Started</a>
+          <button onclick="openSignup('standard')" class="btn btn-featured" style="width:100%;">Get Started</button>
         </div>
 
         <!-- Premium -->
@@ -545,12 +545,149 @@
             <li><span class="check-icon">✓</span> Auto grocery list from meals</li>
             <li><span class="check-icon">✓</span> Store route optimizer</li>
           </ul>
-          <a href="#email-capture" class="btn btn-outline">Get Started</a>
+          <button onclick="openSignup('premium')" class="btn btn-outline" style="width:100%;">Get Started</button>
         </div>
 
       </div>
     </div>
   </section>
+
+  <!-- ── FAQ ─────────────────────────────────────────────── -->
+  <section id="faq" style="padding:90px 24px;background:var(--white);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FAQ</span>
+        <h2>Frequently asked questions</h2>
+        <p>Everything you need to know before getting started.</p>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            How does the free trial work?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Every new account gets a full 7-day free trial — no credit card required to start. You'll have access to all features in your chosen plan. At the end of the trial you can subscribe or let it expire. We'll send a reminder 3 days before your trial ends.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            Which stores do you cover in State College?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>We currently support <strong>Wegmans, GIANT, ALDI, Trader Joe's, and Weis Markets</strong> in the State College area. Walmart pricing is coming soon. We're actively working to expand coverage — if there's a store you'd like to see added, let us know on our <a href="contact.html" style="color:var(--green-dark);font-weight:600;">Contact page</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            How accurate are the crowdsourced prices?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Crowdsourced prices are submitted by real shoppers in your area and are typically very accurate for the week they're submitted. Our system flags outliers and cross-references submissions against store API data where available. Prices are refreshed every week when the bingo board resets, so data stays current. As always, we recommend verifying the price in-store before making a purchase decision.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            Can I cancel anytime?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — absolutely. There are no contracts or cancellation fees. You can cancel your subscription at any time from your account settings. You'll retain access until the end of your current billing period, and you won't be charged again after that.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            How does the bingo reward system work?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Each week we publish a 10×10 bingo board with 100 grocery products across 5 local stores. Submit the real price for each item (with an optional shelf tag photo) to fill your board. Complete all 100 in a single week and you earn <strong>5% off</strong> your next monthly subscription. The discount stacks each week you complete — hit all 4 weeks in a month and you earn the maximum <strong>20% off</strong>. The board resets every Monday.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            What payment methods do you accept?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>We accept all major credit and debit cards (Visa, Mastercard, American Express, Discover) through our secure payment processor, Stripe. Apple Pay and Google Pay are also supported on compatible devices. We do not store your card details — all payment information is handled directly by Stripe.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      text-align: left;
+      gap: 16px;
+      transition: background var(--transition);
+      font-family: inherit;
+    }
+    .faq-question:hover { background: var(--gray-50); }
+    .faq-question.open  { color: var(--green-dark); background: var(--green-pale); }
+    .faq-chevron {
+      font-size: .75rem;
+      flex-shrink: 0;
+      color: var(--gray-600);
+      transition: transform var(--transition);
+    }
+    .faq-question.open .faq-chevron { transform: rotate(180deg); color: var(--green-dark); }
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+    }
+    .faq-answer.open { display: block; }
+    .faq-answer p { font-size: .95rem; color: var(--gray-700, #555); line-height: 1.75; margin: 0; }
+  </style>
+
+  <script>
+    function toggleFaq(btn) {
+      const answer   = btn.nextElementSibling;
+      const isOpen   = btn.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-question.open').forEach(b => {
+        b.classList.remove('open');
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.add('open');
+      }
+    }
+  </script>
 
   <!-- ── Email Capture ────────────────────────────────────── -->
   <section class="email-capture" id="email-capture">
@@ -589,7 +726,7 @@
         <ul>
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="how-it-works-.html">How It Works</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
           <li><a href="#email-capture">Early Access</a></li>
         </ul>
       </div>
@@ -605,8 +742,8 @@
       <div class="footer-col">
         <h4>Legal</h4>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
         </ul>
       </div>
     </div>
@@ -652,5 +789,152 @@
     });
   </script>
 
+  <!-- ── Signup Modal ─────────────────────────────────────── -->
+  <div id="signup-overlay" role="dialog" aria-modal="true" aria-labelledby="signup-title" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;padding:20px;overflow-y:auto;display:none;align-items:center;justify-content:center;">
+    <div id="signup-modal" style="background:#fff;border-radius:16px;max-width:480px;width:100%;margin:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden;">
+
+      <!-- Header -->
+      <div style="background:linear-gradient(135deg,var(--green-darkest),var(--green-mid));padding:28px 28px 24px;position:relative;">
+        <button onclick="closeSignup()" aria-label="Close" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;line-height:1;">&times;</button>
+        <h2 id="signup-title" style="color:#fff;font-size:1.5rem;margin-bottom:4px;">Join <em style="color:#A5D6A7;font-style:normal;">$</em>mart Cart</h2>
+        <p style="color:rgba(255,255,255,.8);font-size:.9rem;margin:0;">Start your 7-day free trial — no credit card required.</p>
+      </div>
+
+      <!-- Body -->
+      <div style="padding:24px 28px 28px;">
+
+        <!-- Plan selector -->
+        <p style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-600);margin-bottom:10px;">Choose your plan</p>
+        <div id="plan-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px;">
+
+          <div class="sc-plan" data-plan="base" onclick="selectPlan('base')" style="border:2px solid var(--gray-200);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;">
+            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-600);margin-bottom:4px;">Base</div>
+            <div style="font-size:1.2rem;font-weight:800;color:var(--green-dark);">$5</div>
+            <div style="font-size:.7rem;color:var(--gray-500);">/month</div>
+          </div>
+
+          <div class="sc-plan sc-plan-popular" data-plan="standard" onclick="selectPlan('standard')" style="border:2px solid var(--green-dark);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;background:var(--green-pale);position:relative;">
+            <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--green-dark);color:#fff;font-size:.6rem;font-weight:800;padding:2px 9px;border-radius:20px;white-space:nowrap;letter-spacing:.04em;">POPULAR</div>
+            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--green-dark);margin-bottom:4px;">Standard</div>
+            <div style="font-size:1.2rem;font-weight:800;color:var(--green-dark);">$10</div>
+            <div style="font-size:.7rem;color:var(--gray-500);">/month</div>
+          </div>
+
+          <div class="sc-plan" data-plan="premium" onclick="selectPlan('premium')" style="border:2px solid var(--gray-200);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;">
+            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-600);margin-bottom:4px;">Premium</div>
+            <div style="font-size:1.2rem;font-weight:800;color:var(--green-dark);">$15</div>
+            <div style="font-size:.7rem;color:var(--gray-500);">/month</div>
+          </div>
+
+        </div>
+
+        <!-- Form -->
+        <form id="signup-form" onsubmit="submitSignup(event)" novalidate>
+          <div style="margin-bottom:14px;">
+            <label style="display:block;font-size:.85rem;font-weight:600;color:var(--gray-800);margin-bottom:6px;" for="su-name">Full Name</label>
+            <input id="su-name" type="text" placeholder="Jane Smith" required autocomplete="name"
+              style="width:100%;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:.95rem;font-family:inherit;color:var(--gray-900);outline:none;transition:border-color .2s;box-sizing:border-box;"
+              onfocus="this.style.borderColor='var(--green-light)'" onblur="this.style.borderColor='var(--gray-200)'" />
+          </div>
+          <div style="margin-bottom:14px;">
+            <label style="display:block;font-size:.85rem;font-weight:600;color:var(--gray-800);margin-bottom:6px;" for="su-email">Email Address</label>
+            <input id="su-email" type="email" placeholder="jane@example.com" required autocomplete="email"
+              style="width:100%;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:.95rem;font-family:inherit;color:var(--gray-900);outline:none;transition:border-color .2s;box-sizing:border-box;"
+              onfocus="this.style.borderColor='var(--green-light)'" onblur="this.style.borderColor='var(--gray-200)'" />
+          </div>
+          <div style="margin-bottom:20px;">
+            <label style="display:block;font-size:.85rem;font-weight:600;color:var(--gray-800);margin-bottom:6px;">Card Details</label>
+            <div style="width:100%;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:.95rem;color:var(--gray-400);background:var(--gray-50);display:flex;align-items:center;gap:10px;box-sizing:border-box;">
+              <span style="font-size:1.1rem;">💳</span> Card details coming soon
+            </div>
+            <p style="font-size:.75rem;color:var(--gray-500);margin-top:5px;">No payment needed during your free trial.</p>
+          </div>
+          <button type="submit" style="width:100%;padding:14px;background:var(--green-dark);color:#fff;border:none;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s;" onmouseover="this.style.background='var(--green-darkest)'" onmouseout="this.style.background='var(--green-dark)'">
+            Start Free Trial
+          </button>
+          <p id="su-error" style="display:none;color:#C62828;font-size:.82rem;text-align:center;margin-top:10px;"></p>
+        </form>
+
+        <!-- Success state -->
+        <div id="signup-success" style="display:none;text-align:center;padding:12px 0 4px;">
+          <div style="font-size:3rem;margin-bottom:14px;">🎉</div>
+          <h3 style="color:var(--green-dark);margin-bottom:10px;">You're on the list!</h3>
+          <p style="color:var(--gray-600);font-size:.95rem;line-height:1.7;margin-bottom:20px;">We'll contact you when we launch to complete your signup.</p>
+          <button onclick="closeSignup()" style="padding:12px 32px;background:var(--green-dark);color:#fff;border:none;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;">Done</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #signup-overlay { display:none; }
+    #signup-overlay.open { display:flex; }
+    .sc-plan.selected {
+      border-color: var(--green-dark) !important;
+      background: var(--green-pale) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46,125,50,.15);
+    }
+    @media (max-width: 480px) {
+      #signup-modal { border-radius: 12px; }
+      #plan-cards   { grid-template-columns: repeat(3,1fr); gap:6px; }
+    }
+  </style>
+
+  <script>
+    const PLAN_LABELS = { base:'Base — $5/mo', standard:'Standard — $10/mo', premium:'Premium — $15/mo' };
+    let selectedPlan = 'standard';
+
+    function openSignup(plan) {
+      selectedPlan = plan || 'standard';
+      selectPlan(selectedPlan);
+      document.getElementById('signup-form').style.display    = '';
+      document.getElementById('signup-success').style.display = 'none';
+      document.getElementById('su-error').style.display       = 'none';
+      document.getElementById('su-name').value  = '';
+      document.getElementById('su-email').value = '';
+      document.getElementById('signup-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('su-name').focus(), 100);
+    }
+
+    function closeSignup() {
+      document.getElementById('signup-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function selectPlan(plan) {
+      selectedPlan = plan;
+      document.querySelectorAll('.sc-plan').forEach(c => {
+        c.classList.toggle('selected', c.dataset.plan === plan);
+      });
+    }
+
+    function submitSignup(e) {
+      e.preventDefault();
+      const name  = document.getElementById('su-name').value.trim();
+      const email = document.getElementById('su-email').value.trim();
+      const err   = document.getElementById('su-error');
+      if (!name)  { err.textContent = 'Please enter your full name.';  err.style.display='block'; return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        err.textContent = 'Please enter a valid email address.';
+        err.style.display = 'block'; return;
+      }
+      err.style.display = 'none';
+      document.getElementById('signup-form').style.display    = 'none';
+      document.getElementById('signup-success').style.display = 'block';
+    }
+
+    // Close on backdrop click
+    document.getElementById('signup-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeSignup();
+    });
+    // Close on Escape
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSignup(); });
+  </script>
+
+  <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+  <script>window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300)});</script>
 </body>
 </html>
