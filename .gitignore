@@ -1,4 +1,5 @@
 images/IMG_1277.mov
 .env.local
 .env
-images/
+node_modules/
+.DS_Store
