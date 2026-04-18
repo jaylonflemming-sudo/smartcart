@@ -790,12 +790,12 @@
   </script>
 
   <!-- ── Signup Modal ─────────────────────────────────────── -->
-  <div id="signup-overlay" role="dialog" aria-modal="true" aria-labelledby="signup-title" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;padding:20px;overflow-y:auto;display:none;align-items:center;justify-content:center;">
-    <div id="signup-modal" style="background:#fff;border-radius:16px;max-width:480px;width:100%;margin:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden;">
+  <div id="signup-overlay" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+    <div id="signup-modal">
 
       <!-- Header -->
       <div style="background:linear-gradient(135deg,var(--green-darkest),var(--green-mid));padding:28px 28px 24px;position:relative;">
-        <button onclick="closeSignup()" aria-label="Close" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;line-height:1;">&times;</button>
+        <button id="signup-close" aria-label="Close">&times;</button>
         <h2 id="signup-title" style="color:#fff;font-size:1.5rem;margin-bottom:4px;">Join <em style="color:#A5D6A7;font-style:normal;">$</em>mart Cart</h2>
         <p style="color:rgba(255,255,255,.8);font-size:.9rem;margin:0;">Start your 7-day free trial — no credit card required.</p>
       </div>
@@ -807,20 +807,20 @@
         <p style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-600);margin-bottom:10px;">Choose your plan</p>
         <div id="plan-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px;">
 
-          <div class="sc-plan" data-plan="base" onclick="selectPlan('base')" style="border:2px solid var(--gray-200);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;">
+          <div class="sc-plan" data-plan="base" style="border:2px solid var(--gray-200);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;">
             <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-600);margin-bottom:4px;">Base</div>
             <div style="font-size:1.2rem;font-weight:800;color:var(--green-dark);">$5</div>
             <div style="font-size:.7rem;color:var(--gray-500);">/month</div>
           </div>
 
-          <div class="sc-plan sc-plan-popular" data-plan="standard" onclick="selectPlan('standard')" style="border:2px solid var(--green-dark);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;background:var(--green-pale);position:relative;">
+          <div class="sc-plan" data-plan="standard" style="border:2px solid var(--green-dark);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;background:var(--green-pale);position:relative;">
             <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--green-dark);color:#fff;font-size:.6rem;font-weight:800;padding:2px 9px;border-radius:20px;white-space:nowrap;letter-spacing:.04em;">POPULAR</div>
             <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--green-dark);margin-bottom:4px;">Standard</div>
             <div style="font-size:1.2rem;font-weight:800;color:var(--green-dark);">$10</div>
             <div style="font-size:.7rem;color:var(--gray-500);">/month</div>
           </div>
 
-          <div class="sc-plan" data-plan="premium" onclick="selectPlan('premium')" style="border:2px solid var(--gray-200);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;">
+          <div class="sc-plan" data-plan="premium" style="border:2px solid var(--gray-200);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;">
             <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-600);margin-bottom:4px;">Premium</div>
             <div style="font-size:1.2rem;font-weight:800;color:var(--green-dark);">$15</div>
             <div style="font-size:.7rem;color:var(--gray-500);">/month</div>
@@ -829,16 +829,16 @@
         </div>
 
         <!-- Form -->
-        <form id="signup-form" onsubmit="submitSignup(event)" novalidate>
+        <form id="signup-form" novalidate>
           <div style="margin-bottom:14px;">
             <label style="display:block;font-size:.85rem;font-weight:600;color:var(--gray-800);margin-bottom:6px;" for="su-name">Full Name</label>
-            <input id="su-name" type="text" placeholder="Jane Smith" required autocomplete="name"
+            <input id="su-name" type="text" placeholder="Jane Smith" autocomplete="name"
               style="width:100%;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:.95rem;font-family:inherit;color:var(--gray-900);outline:none;transition:border-color .2s;box-sizing:border-box;"
               onfocus="this.style.borderColor='var(--green-light)'" onblur="this.style.borderColor='var(--gray-200)'" />
           </div>
           <div style="margin-bottom:14px;">
             <label style="display:block;font-size:.85rem;font-weight:600;color:var(--gray-800);margin-bottom:6px;" for="su-email">Email Address</label>
-            <input id="su-email" type="email" placeholder="jane@example.com" required autocomplete="email"
+            <input id="su-email" type="email" placeholder="jane@example.com" autocomplete="email"
               style="width:100%;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:.95rem;font-family:inherit;color:var(--gray-900);outline:none;transition:border-color .2s;box-sizing:border-box;"
               onfocus="this.style.borderColor='var(--green-light)'" onblur="this.style.borderColor='var(--gray-200)'" />
           </div>
@@ -849,10 +849,10 @@
             </div>
             <p style="font-size:.75rem;color:var(--gray-500);margin-top:5px;">No payment needed during your free trial.</p>
           </div>
-          <button type="submit" style="width:100%;padding:14px;background:var(--green-dark);color:#fff;border:none;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s;" onmouseover="this.style.background='var(--green-darkest)'" onmouseout="this.style.background='var(--green-dark)'">
+          <p id="su-error" style="display:none;color:#C62828;font-size:.82rem;text-align:center;margin-bottom:10px;"></p>
+          <button id="signup-submit" type="button" style="width:100%;padding:14px;background:var(--green-dark);color:#fff;border:none;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;">
             Start Free Trial
           </button>
-          <p id="su-error" style="display:none;color:#C62828;font-size:.82rem;text-align:center;margin-top:10px;"></p>
         </form>
 
         <!-- Success state -->
@@ -860,7 +860,7 @@
           <div style="font-size:3rem;margin-bottom:14px;">🎉</div>
           <h3 style="color:var(--green-dark);margin-bottom:10px;">You're on the list!</h3>
           <p style="color:var(--gray-600);font-size:.95rem;line-height:1.7;margin-bottom:20px;">We'll contact you when we launch to complete your signup.</p>
-          <button onclick="closeSignup()" style="padding:12px 32px;background:var(--green-dark);color:#fff;border:none;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;">Done</button>
+          <button id="signup-done" style="padding:12px 32px;background:var(--green-dark);color:#fff;border:none;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;">Done</button>
         </div>
 
       </div>
@@ -868,70 +868,131 @@
   </div>
 
   <style>
-    #signup-overlay { display:none; }
-    #signup-overlay.open { display:flex; }
+    #signup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 900;
+      padding: 20px;
+      overflow-y: auto;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    #signup-overlay.open { display: flex; }
+    #signup-modal {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 480px;
+      width: 100%;
+      margin: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+      overflow: hidden;
+      cursor: default;
+    }
+    #signup-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: rgba(255,255,255,.15);
+      border: none;
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background .2s;
+    }
+    #signup-close:hover { background: rgba(255,255,255,.3); }
     .sc-plan.selected {
       border-color: var(--green-dark) !important;
       background: var(--green-pale) !important;
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(46,125,50,.15);
     }
+    #signup-submit:hover { background: var(--green-darkest) !important; }
     @media (max-width: 480px) {
       #signup-modal { border-radius: 12px; }
-      #plan-cards   { grid-template-columns: repeat(3,1fr); gap:6px; }
+      #plan-cards   { gap: 6px; }
     }
   </style>
 
   <script>
-    const PLAN_LABELS = { base:'Base — $5/mo', standard:'Standard — $10/mo', premium:'Premium — $15/mo' };
-    let selectedPlan = 'standard';
+    (function () {
+      var overlay  = document.getElementById('signup-overlay');
+      var modal    = document.getElementById('signup-modal');
+      var closeBtn = document.getElementById('signup-close');
+      var doneBtn  = document.getElementById('signup-done');
+      var submitBtn = document.getElementById('signup-submit');
+      var form     = document.getElementById('signup-form');
+      var success  = document.getElementById('signup-success');
+      var errMsg   = document.getElementById('su-error');
+      var selectedPlan = 'standard';
 
-    function openSignup(plan) {
-      selectedPlan = plan || 'standard';
-      selectPlan(selectedPlan);
-      document.getElementById('signup-form').style.display    = '';
-      document.getElementById('signup-success').style.display = 'none';
-      document.getElementById('su-error').style.display       = 'none';
-      document.getElementById('su-name').value  = '';
-      document.getElementById('su-email').value = '';
-      document.getElementById('signup-overlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => document.getElementById('su-name').focus(), 100);
-    }
+      // ── Open ──
+      window.openSignup = function (plan) {
+        selectedPlan = plan || 'standard';
+        selectPlan(selectedPlan);
+        form.style.display    = 'block';
+        success.style.display = 'none';
+        errMsg.style.display  = 'none';
+        document.getElementById('su-name').value  = '';
+        document.getElementById('su-email').value = '';
+        overlay.classList.add('open');
+        setTimeout(function () { document.getElementById('su-name').focus(); }, 150);
+      };
 
-    function closeSignup() {
-      document.getElementById('signup-overlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function selectPlan(plan) {
-      selectedPlan = plan;
-      document.querySelectorAll('.sc-plan').forEach(c => {
-        c.classList.toggle('selected', c.dataset.plan === plan);
-      });
-    }
-
-    function submitSignup(e) {
-      e.preventDefault();
-      const name  = document.getElementById('su-name').value.trim();
-      const email = document.getElementById('su-email').value.trim();
-      const err   = document.getElementById('su-error');
-      if (!name)  { err.textContent = 'Please enter your full name.';  err.style.display='block'; return; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        err.textContent = 'Please enter a valid email address.';
-        err.style.display = 'block'; return;
+      // ── Close ──
+      function closeSignup() {
+        overlay.classList.remove('open');
       }
-      err.style.display = 'none';
-      document.getElementById('signup-form').style.display    = 'none';
-      document.getElementById('signup-success').style.display = 'block';
-    }
+      window.closeSignup = closeSignup;
+      closeBtn.addEventListener('click', closeSignup);
+      doneBtn.addEventListener('click', closeSignup);
 
-    // Close on backdrop click
-    document.getElementById('signup-overlay').addEventListener('click', function(e) {
-      if (e.target === this) closeSignup();
-    });
-    // Close on Escape
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSignup(); });
+      // ── Click outside (overlay backdrop only) ──
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeSignup();
+      });
+
+      // ── Escape key ──
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeSignup();
+      });
+
+      // ── Plan selection ──
+      function selectPlan(plan) {
+        selectedPlan = plan;
+        document.querySelectorAll('.sc-plan').forEach(function (c) {
+          c.classList.toggle('selected', c.dataset.plan === plan);
+        });
+      }
+      window.selectPlan = selectPlan;
+      document.querySelectorAll('.sc-plan').forEach(function (c) {
+        c.addEventListener('click', function () { selectPlan(c.dataset.plan); });
+      });
+
+      // ── Submit ──
+      submitBtn.addEventListener('click', function () {
+        var name  = document.getElementById('su-name').value.trim();
+        var email = document.getElementById('su-email').value.trim();
+        if (!name) {
+          errMsg.textContent = 'Please enter your full name.';
+          errMsg.style.display = 'block'; return;
+        }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errMsg.textContent = 'Please enter a valid email address.';
+          errMsg.style.display = 'block'; return;
+        }
+        errMsg.style.display  = 'none';
+        form.style.display    = 'none';
+        success.style.display = 'block';
+      });
+    })();
   </script>
 
   <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
