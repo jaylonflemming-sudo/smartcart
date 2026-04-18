@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$mart Cart — Smart Grocery Shopping</title>
+  <meta name="description" content="Compare grocery prices across stores, track your macros, and get AI-powered meal plans — all in one subscription." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="index.html">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <span><em>$</em>mart Cart</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bingo.html">Price Bingo</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="#pricing" class="btn btn-outline" style="padding:10px 22px;font-size:.9rem;">See Plans</a>
+        <a href="#email-capture" class="btn btn-primary" style="padding:10px 22px;font-size:.9rem;">Get Early Access</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="about.html">About</a>
+      <a href="bingo.html">Price Bingo</a>
+      <a href="contact.html">Contact</a>
+      <a href="#pricing" style="color:var(--green-dark);font-weight:700;">See Plans</a>
+    </div>
+  </header>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Now in Early Access
+        </div>
+
+        <h1>Shop Smarter.<br>Eat <span>Better.</span><br>Save More.</h1>
+
+        <p class="hero-sub">
+          $mart Cart compares grocery prices across your local stores, tracks your macros,
+          and builds personalized meal plans — powered by AI.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#email-capture" class="btn btn-white">Get Early Access</a>
+          <a href="how-it-works-.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5);">See How It Works</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">40+</div>
+            <div class="stat-label">Stores Compared</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$180</div>
+            <div class="stat-label">Avg. Monthly Savings</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Recipes &amp; Meal Plans</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo card -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <span class="hero-card-title">Cart Comparison</span>
+            <span class="hero-card-badge">Live</span>
+          </div>
+
+          <!-- Cart items list -->
+          <div class="cart-items">
+            <div class="cart-item-row">
+              <span class="cart-item-name">Chicken Breast, 2 lb</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Whole Milk, 1 gal</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Whole Wheat Bread</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Eggs, 1 dozen</span>
+            </div>
+            <div class="cart-item-row">
+              <span class="cart-item-name">Bananas, 1 lb</span>
+            </div>
+          </div>
+
+          <div class="cart-divider"></div>
+
+          <!-- Store totals -->
+          <div class="price-row">
+            <div class="price-store">
+              <div class="store-icon" style="background:#1565C0;">WM</div>
+              <div>
+                <div class="store-name">Walmart</div>
+                <div class="store-item">5 items · best price each</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="price-tag best">$24.13</div>
+              <div class="price-best-label">Best Price ✓</div>
+            </div>
+          </div>
+
+          <div class="price-row">
+            <div class="price-store">
+              <div class="store-icon" style="background:#1B5E20;">KR</div>
+              <div>
+                <div class="store-name">Kroger</div>
+                <div class="store-item">5 items</div>
+              </div>
+            </div>
+            <div>
+              <div class="price-tag">$28.45</div>
+            </div>
+          </div>
+
+          <div class="price-row">
+            <div class="price-store">
+              <div class="store-icon" style="background:#BF360C;">TG</div>
+              <div>
+                <div class="store-name">Target</div>
+                <div class="store-item">5 items</div>
+              </div>
+            </div>
+            <div>
+              <div class="price-tag">$31.20</div>
+            </div>
+          </div>
+
+          <div class="savings-banner">
+            <span class="savings-text">Savings vs. most expensive store</span>
+            <span class="savings-amount">$7.07</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ────────────────────────────────────────── -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Features</span>
+        <h2>Everything you need to shop smart</h2>
+        <p>One subscription gives you real-time price intelligence, personalized nutrition tracking, and AI-generated meal plans tailored to your budget.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">$</div>
+          <h3>Real-Time Price Comparison</h3>
+          <p>Instantly compare prices across 40+ grocery stores in your area. Build your cart and let $mart Cart find you the best deal automatically.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">N</div>
+          <h3>Macro &amp; Nutrition Tracker</h3>
+          <p>Track calories, protein, carbs, and fats for every item in your cart. Hit your health goals while staying on budget — no double-app juggling.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">AI</div>
+          <h3>AI Meal Planner</h3>
+          <p>Get a full week of personalized meal plans generated by AI, optimized for your dietary needs, taste preferences, and weekly grocery budget.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">%</div>
+          <h3>Sale &amp; Coupon Alerts</h3>
+          <p>Never miss a deal. Receive instant notifications when items on your shopping list go on sale or a matching coupon becomes available.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">R</div>
+          <h3>500+ Budget Recipes</h3>
+          <p>Access a growing library of delicious, budget-friendly recipes. Each recipe auto-generates a shopping list optimized for your nearest store.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">RT</div>
+          <h3>Store Route Optimizer</h3>
+          <p>When split-store shopping saves big, our route optimizer plans the most efficient path to hit multiple stores with minimal time and gas spent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works (mini) ─────────────────────────────── -->
+  <section class="how-mini" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">How It Works</span>
+        <h2>Four steps to smarter grocery shopping</h2>
+        <p>Getting started takes less than two minutes. See the full walkthrough on our <a href="how-it-works.html" style="color:var(--green-dark);font-weight:600;">How It Works</a> page.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Create Your Profile</h3>
+          <p>Set your dietary goals, food preferences, and monthly grocery budget.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Build Your List</h3>
+          <p>Add items manually or let our AI suggest a week's worth of groceries for you.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Compare &amp; Save</h3>
+          <p>We scan prices across local stores and highlight the best deal for every item.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Shop &amp; Track</h3>
+          <p>Check off items as you shop and watch your nutrition and savings tally in real time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Price Comparison ────────────────────────────────── -->
+  <section id="compare" style="padding:90px 24px;background:var(--white);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Live Price Comparison</span>
+        <h2>Search any grocery item</h2>
+        <p>See real Kroger prices instantly — Walmart integration coming soon.</p>
+      </div>
+
+      <!-- Search bar -->
+      <div style="max-width:560px;margin:0 auto 48px;display:flex;gap:12px;">
+        <input
+          id="pc-input"
+          type="text"
+          placeholder="e.g. chicken breast, almond milk, eggs…"
+          style="flex:1;padding:14px 18px;border:2px solid var(--gray-200);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;outline:none;transition:border-color var(--transition);"
+          onkeydown="if(event.key==='Enter')pcSearch()"
+          onfocus="this.style.borderColor='var(--green-light)'"
+          onblur="this.style.borderColor='var(--gray-200)'"
+        />
+        <button
+          onclick="pcSearch()"
+          class="btn btn-primary"
+          style="white-space:nowrap;padding:14px 28px;"
+        >Search</button>
+      </div>
+
+      <!-- State: idle -->
+      <div id="pc-idle" style="text-align:center;color:var(--gray-500);font-size:.95rem;">
+        Try searching "milk", "eggs", or "Greek yogurt"
+      </div>
+
+      <!-- State: loading -->
+      <div id="pc-loading" style="display:none;text-align:center;padding:40px 0;">
+        <div style="display:inline-block;width:36px;height:36px;border:3px solid var(--gray-200);border-top-color:var(--green-mid);border-radius:50%;animation:pcSpin .7s linear infinite;"></div>
+        <p style="margin-top:14px;color:var(--gray-500);">Fetching Kroger prices…</p>
+      </div>
+
+      <!-- State: error -->
+      <div id="pc-error" style="display:none;text-align:center;padding:32px;background:#fff3f3;border-radius:var(--radius);color:#c62828;max-width:500px;margin:0 auto;">
+        <strong>Could not load prices.</strong> <span id="pc-error-msg"></span>
+      </div>
+
+      <!-- State: no results -->
+      <div id="pc-empty" style="display:none;text-align:center;color:var(--gray-500);padding:32px 0;">
+        No products found — try a different search term.
+      </div>
+
+      <!-- Results -->
+      <div id="pc-results" style="display:none;">
+        <!-- Store header row -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:860px;margin:0 auto 12px;padding:0 8px;">
+          <div style="font-size:.8rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;">Product</div>
+          <div style="text-align:center;">
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#E8F5E9;color:#1B5E20;padding:6px 14px;border-radius:20px;font-size:.82rem;font-weight:700;">
+              <span style="display:inline-block;width:10px;height:10px;background:#2E7D32;border-radius:50%;"></span>
+              Kroger — Live
+            </span>
+          </div>
+          <div style="text-align:center;">
+            <span style="display:inline-flex;align-items:center;gap:6px;background:var(--gray-100);color:var(--gray-500);padding:6px 14px;border-radius:20px;font-size:.82rem;font-weight:700;">
+              Walmart (coming soon)
+            </span>
+          </div>
+        </div>
+
+        <div id="pc-list" style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:10px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes pcSpin { to { transform:rotate(360deg); } }
+    .pc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      align-items: center;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      transition: box-shadow var(--transition);
+    }
+    .pc-row:hover { box-shadow: var(--shadow-sm); }
+    .pc-product   { display: flex; align-items: center; gap: 12px; }
+    .pc-img       { width: 48px; height: 48px; object-fit: contain; border-radius: 6px; background: #fff; flex-shrink: 0; }
+    .pc-img-placeholder { width:48px;height:48px;border-radius:6px;background:var(--gray-200);display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:1.3rem;flex-shrink:0; }
+    .pc-name      { font-size: .9rem; font-weight: 600; color: var(--gray-900); line-height: 1.35; }
+    .pc-size      { font-size: .78rem; color: var(--gray-500); margin-top: 2px; }
+    .pc-price-col { text-align: center; }
+    .pc-price     { font-size: 1.2rem; font-weight: 800; color: var(--green-dark); }
+    .pc-sale      { font-size: .78rem; color: var(--gray-400); text-decoration: line-through; margin-top: 2px; }
+    .pc-no-price  { font-size: .85rem; color: var(--gray-400); }
+    .pc-wmt-price { font-size: 1.2rem; font-weight: 800; color: var(--gray-300); filter: blur(4px); user-select: none; }
+    .pc-wmt-label { font-size: .72rem; color: var(--gray-400); margin-top: 3px; }
+    @media (max-width: 600px) {
+      .pc-row { grid-template-columns: 1fr; gap: 8px; }
+      .pc-price-col { text-align: left; padding-left: 60px; }
+    }
+  </style>
+
+  <script>
+    function pcSearch() {
+      const q = document.getElementById('pc-input').value.trim();
+      if (!q) return;
+      pcShow('loading');
+      fetch(`/api/kroger/search?query=${encodeURIComponent(q)}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.error) { pcShowError(data.error); return; }
+          pcRender(data.products);
+        })
+        .catch(() => pcShowError('Network error — please try again.'));
+    }
+
+    function pcShow(state) {
+      ['idle','loading','error','empty','results'].forEach(s => {
+        document.getElementById('pc-' + s).style.display = 'none';
+      });
+      document.getElementById('pc-' + state).style.display = '';
+    }
+
+    function pcShowError(msg) {
+      document.getElementById('pc-error-msg').textContent = msg;
+      pcShow('error');
+    }
+
+    function pcRender(products) {
+      if (!products || products.length === 0) { pcShow('empty'); return; }
+      const list = document.getElementById('pc-list');
+      list.innerHTML = products.map(p => {
+        const krogerPrice = p.price != null
+          ? `<div class="pc-price">$${p.price.toFixed(2)}</div>${p.salePrice ? `<div class="pc-sale">was $${(p.price * 1.1).toFixed(2)}</div>` : ''}`
+          : `<div class="pc-no-price">Price unavailable</div>`;
+
+        // Deterministic fake Walmart price based on product ID hash
+        const seed   = [...(p.productId ?? p.name ?? '')].reduce((a, c) => a + c.charCodeAt(0), 0);
+        const offset = ((seed % 21) - 10) / 100; // -10% to +10%
+        const wmt    = p.price != null ? (p.price * (1 + offset)).toFixed(2) : null;
+        const wmtCol = wmt
+          ? `<div class="pc-wmt-price">$${wmt}</div><div class="pc-wmt-label">Coming soon</div>`
+          : `<div class="pc-no-price">—</div>`;
+
+        const img = p.imageUrl
+          ? `<img class="pc-img" src="${p.imageUrl}" alt="" loading="lazy" />`
+          : `<div class="pc-img-placeholder">🛒</div>`;
+
+        return `
+          <div class="pc-row">
+            <div class="pc-product">
+              ${img}
+              <div>
+                <div class="pc-name">${p.name}</div>
+                ${p.size ? `<div class="pc-size">${p.size}</div>` : ''}
+              </div>
+            </div>
+            <div class="pc-price-col">${krogerPrice}</div>
+            <div class="pc-price-col">${wmtCol}</div>
+          </div>`;
+      }).join('');
+      pcShow('results');
+    }
+  </script>
+
+  <!-- ── Bingo Explainer ─────────────────────────────────── -->
+  <section id="bingo" style="padding:90px 24px;background:var(--green-pale);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Community Feature</span>
+        <h2>Play Price Bingo — Earn Real Discounts</h2>
+        <p>Help crowdsource grocery prices while earning up to 20% off your monthly subscription. Here's how it works.</p>
+      </div>
+
+      <!-- How it works row -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:860px;margin:0 auto 56px;">
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px 24px;text-align:center;box-shadow:var(--shadow-sm);">
+          <div style="font-size:2.2rem;margin-bottom:12px;">🟩</div>
+          <h4 style="margin-bottom:8px;">Claim a Cell</h4>
+          <p style="font-size:.9rem;color:var(--gray-600);margin:0;">Browse the 10×10 grid of 100 grocery items across 5 local stores.</p>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px 24px;text-align:center;box-shadow:var(--shadow-sm);">
+          <div style="font-size:2.2rem;margin-bottom:12px;">📸</div>
+          <h4 style="margin-bottom:8px;">Submit a Price</h4>
+          <p style="font-size:.9rem;color:var(--gray-600);margin:0;">Upload a shelf tag photo and enter the price you see in store.</p>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px 24px;text-align:center;box-shadow:var(--shadow-sm);">
+          <div style="font-size:2.2rem;margin-bottom:12px;">💰</div>
+          <h4 style="margin-bottom:8px;">Earn Your Discount</h4>
+          <p style="font-size:.9rem;color:var(--gray-600);margin:0;">Complete all 100 in one week and earn 5% off. Stack weeks to hit 20%.</p>
+        </div>
+      </div>
+
+      <!-- Reward tiers -->
+      <div style="max-width:700px;margin:0 auto 40px;">
+        <h3 style="text-align:center;margin-bottom:24px;">Reward Tiers</h3>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+          <div style="background:var(--white);border:2px solid #C8E6C9;border-radius:var(--radius-sm);padding:18px 12px;text-align:center;">
+            <div style="font-size:.75rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Week 1</div>
+            <div style="font-size:1.6rem;font-weight:900;color:var(--green-dark);">5%</div>
+            <div style="font-size:.8rem;color:var(--gray-500);">off next month</div>
+          </div>
+          <div style="background:var(--white);border:2px solid #C8E6C9;border-radius:var(--radius-sm);padding:18px 12px;text-align:center;">
+            <div style="font-size:.75rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Week 2</div>
+            <div style="font-size:1.6rem;font-weight:900;color:var(--green-dark);">10%</div>
+            <div style="font-size:.8rem;color:var(--gray-500);">off next month</div>
+          </div>
+          <div style="background:var(--white);border:2px solid #C8E6C9;border-radius:var(--radius-sm);padding:18px 12px;text-align:center;">
+            <div style="font-size:.75rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Week 3</div>
+            <div style="font-size:1.6rem;font-weight:900;color:var(--green-dark);">15%</div>
+            <div style="font-size:.8rem;color:var(--gray-500);">off next month</div>
+          </div>
+          <div style="background:var(--green-dark);border:2px solid var(--green-dark);border-radius:var(--radius-sm);padding:18px 12px;text-align:center;position:relative;">
+            <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#FFD700;color:#1B5E20;font-size:.65rem;font-weight:800;padding:2px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;">Max!</div>
+            <div style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Week 4</div>
+            <div style="font-size:1.6rem;font-weight:900;color:#fff;">20%</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.75);">off next month</div>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:16px;font-size:.85rem;color:var(--gray-600);">Board resets every Monday. Discounts stack — completing all 4 weeks in a month maxes out at 20% off.</p>
+      </div>
+
+      <div style="text-align:center;">
+        <a href="bingo.html" class="btn btn-primary" style="font-size:1.05rem;padding:16px 36px;">Play Price Bingo →</a>
+        <p style="margin-top:12px;font-size:.85rem;color:var(--gray-600);">Free to play · No account required · Board resets every Monday</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ──────────────────────────────────────────── -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Pricing</span>
+        <h2>Simple, transparent pricing</h2>
+        <p>Start free for 30 days. Cancel any time. Every plan pays for itself in your first shopping trip.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Base -->
+        <div class="pricing-card">
+          <div class="pricing-tier">Base</div>
+          <h3>Price Tracker</h3>
+          <div class="price-display">
+            <span class="price-currency">$</span>
+            <span class="price-amount">5</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <p class="pricing-desc">Everything you need to find the best grocery prices near you.</p>
+          <ul class="feature-list">
+            <li><span class="check-icon">✓</span> Real-time price comparison</li>
+            <li><span class="check-icon">✓</span> 40+ stores supported</li>
+            <li><span class="check-icon">✓</span> Shopping list builder</li>
+            <li><span class="check-icon">✓</span> Sale &amp; coupon alerts</li>
+            <li><span class="check-icon">✓</span> Weekly savings report</li>
+          </ul>
+          <a href="#email-capture" class="btn btn-outline">Get Started</a>
+        </div>
+
+        <!-- Standard / Featured -->
+        <div class="pricing-card featured" style="position:relative;">
+          <span class="featured-badge">Most Popular</span>
+          <div class="pricing-tier">Standard</div>
+          <h3>Nutrition+</h3>
+          <div class="price-display">
+            <span class="price-currency">$</span>
+            <span class="price-amount">10</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <p class="pricing-desc">Price comparison plus full macro tracking to fuel your health goals.</p>
+          <ul class="feature-list">
+            <li><span class="check-icon">✓</span> Everything in Base</li>
+            <li><span class="check-icon">✓</span> Macro &amp; calorie calculator</li>
+            <li><span class="check-icon">✓</span> Nutrition label scanner</li>
+            <li><span class="check-icon">✓</span> Daily &amp; weekly nutrition goals</li>
+            <li><span class="check-icon">✓</span> Progress charts &amp; insights</li>
+          </ul>
+          <a href="#email-capture" class="btn btn-featured">Get Started</a>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card">
+          <div class="pricing-tier">Premium</div>
+          <h3>AI Planner</h3>
+          <div class="price-display">
+            <span class="price-currency">$</span>
+            <span class="price-amount">15</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <p class="pricing-desc">The full experience — AI meal planning, recipes, and maximum savings.</p>
+          <ul class="feature-list">
+            <li><span class="check-icon">✓</span> Everything in Standard</li>
+            <li><span class="check-icon">✓</span> AI-powered meal planner</li>
+            <li><span class="check-icon">✓</span> 500+ budget recipes</li>
+            <li><span class="check-icon">✓</span> Auto grocery list from meals</li>
+            <li><span class="check-icon">✓</span> Store route optimizer</li>
+          </ul>
+          <a href="#email-capture" class="btn btn-outline">Get Started</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Email Capture ────────────────────────────────────── -->
+  <section class="email-capture" id="email-capture">
+    <div class="container">
+      <h2>Be the first to know when we launch</h2>
+      <p>Join thousands of smart shoppers on the early access list. No spam — just your invite.</p>
+
+      <form class="email-form" id="email-form" novalidate>
+        <input
+          type="email"
+          id="email-input"
+          placeholder="Enter your email address"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn btn-white">Notify Me</button>
+      </form>
+
+      <div id="email-confirmation" role="alert">
+        You're on the list! We'll be in touch soon.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/smartcart-icon.png" alt="$mart Cart logo" />
+        <div class="footer-brand-name"><em>$</em>mart Cart</div>
+        <p>The smartest way to shop for groceries. Compare prices, track nutrition, and plan meals — all in one place.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="how-it-works-.html">How It Works</a></li>
+          <li><a href="#email-capture">Early Access</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 $mart Cart. All rights reserved.</span>
+      <span>Built for smarter shoppers</span>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ───────────────────────────────────────────── -->
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // Email capture form
+    const form = document.getElementById('email-form');
+    const confirmation = document.getElementById('email-confirmation');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value.trim();
+      if (!email || !email.includes('@')) return;
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (mobileNav.classList.contains('open')) {
+            mobileNav.classList.remove('open');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

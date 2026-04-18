@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/bingo/reset",
+      "schedule": "0 5 * * 1"
+    }
+  ]
+}
