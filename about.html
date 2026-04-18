@@ -63,34 +63,22 @@
     .photos-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 24px;
       max-width: 900px;
       margin: 0 auto;
     }
-    .photo-placeholder {
-      aspect-ratio: 3/4;
-      background: var(--gray-200);
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
       border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 2px dashed var(--gray-400);
-      transition: all var(--transition);
+      box-shadow: var(--shadow-md);
+      display: block;
+      transition: transform var(--transition), box-shadow var(--transition);
     }
-    .photo-placeholder:hover {
-      border-color: var(--green-light);
-      background: var(--green-pale);
-    }
-    .photo-placeholder .photo-icon {
-      font-size: 2.4rem;
-      opacity: .45;
-    }
-    .photo-placeholder span {
-      font-size: .9rem;
-      font-weight: 600;
-      color: var(--gray-600);
+    .founder-photo:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
 
     /* Video */
@@ -152,7 +140,7 @@
     /* Responsive */
     @media (max-width: 768px) {
       .bio-grid    { grid-template-columns: 1fr; gap: 40px; }
-      .photos-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+      .photos-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
       .values-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
@@ -252,14 +240,14 @@
     <div class="container">
       <div class="section-header">
         <span class="section-label">The Face Behind It</span>
-        <h2>Meet the founder</h2>
+        <h2>Meet The Founder</h2>
         <p>A glimpse into the work and passion behind $mart Cart.</p>
       </div>
 
       <div class="photos-grid">
-        <img src="images/PP3.png" alt="Founder photo 1" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius);" />
-        <img src="images/PP4.JPG" alt="Founder photo 2" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius);" />
-        <img src="images/PP1.JPG" alt="Founder photo 3" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius);" />
+        <img src="images/PP1 (1).jpg" alt="Founder photo 1" class="founder-photo" />
+        <img src="images/PP3.jpg"     alt="Founder photo 2" class="founder-photo" />
+        <img src="images/PP4 (1).jpg" alt="Founder photo 3" class="founder-photo" />
       </div>
     </div>
   </section>
